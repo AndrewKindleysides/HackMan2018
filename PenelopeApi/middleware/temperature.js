@@ -11,7 +11,7 @@ function setTemperature(req, res){
 
     if(req.params.t >= threshholdTemp)
     {
-        if(timing.canSendSms())
+        //if(timing.canSendSms())
         {
             sms.send("Have we moved back down to hell?");
             timing.update(new Date());
