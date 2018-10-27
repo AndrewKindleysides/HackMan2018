@@ -16,11 +16,15 @@ function sendSms(message){
 
 function setTemperature(req, res){
     
+    console.log(req.params.t);
     if(req.params.t >= threshholdTemp )
+    {
+        sendSms("Have we moved to hell again?");
+    }
 
     res.setHeader('Content-Type', 'text/plain');
     res.write('you posted:\n');
-    res.end(JSON.stringify(req.params.p, null, 2));   
+    res.end(JSON.stringify(req.params.t, null, 2));   
 }
 
 exports.setTemperature = setTemperature;
