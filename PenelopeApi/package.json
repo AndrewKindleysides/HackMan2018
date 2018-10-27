@@ -1,0 +1,14 @@
+{
+  "name": "penelopi-api",
+  "version": "1.0.0",
+  "description": "shouts when things get too hot or dry",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
