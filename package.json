@@ -4,6 +4,7 @@
   "description": "shouts when things get too hot or dry",
   "main": "PenelopeApi/index.js",
   "scripts": {
+    "start": "node PenelopeApi/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

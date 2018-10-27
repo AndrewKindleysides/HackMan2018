@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var temperature = require('./middleware/temperature');
 var fan = require('./middleware/fan');
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(bodyParser.json());
