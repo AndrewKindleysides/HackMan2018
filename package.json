@@ -2,7 +2,7 @@
   "name": "penelopi-api",
   "version": "1.0.0",
   "description": "shouts when things get too hot or dry",
-  "main": "index.js",
+  "main": "PenelopeApi/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
