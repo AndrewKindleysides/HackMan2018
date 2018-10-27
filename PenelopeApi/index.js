@@ -1,6 +1,6 @@
-var temperature = require("./middleware/temperature")
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var temperature = require('./middleware/temperature');
 
 const port = 3000;
 const app = express();
