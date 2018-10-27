@@ -13,10 +13,7 @@ while True:
 	result = instance.read()
 	
 	if result.is_valid():
-		print("Temperature: %d C" result.temperature)
-		print("Humidy: %d C" result.humidity)
-	else
-		print("Error: %d" result.error_code)
+		print('Temperature: {0} C'.format(result.temperature))
+	else:
+		print('Error: {0}'.format(result.error_code))
 	time.sleep(2)
-		
-
