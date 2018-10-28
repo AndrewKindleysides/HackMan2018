@@ -9,6 +9,7 @@ function setTemperature(req, res, cache){
     var sensorTemp = req.params.t;
     
     timing.set(sensorTemp, "latestTemp", cache);
+    res.setHeader('Content-Type', 'text/plain');
 
     if(sensorTemp >= threshholdTemp)
     {
@@ -18,15 +19,19 @@ function setTemperature(req, res, cache){
             sms.send(message);
             timing.update(cache);
 
-            res.setHeader('Content-Type', 'text/plain');
+            
             res.write(message);  
             res.end(); 
             return;
         }
+        else{
+            
+            res.end(JSON.stringify("Too many messages sent recently", null, 2)); 
+            return;
+        }
     }
 
-    res.setHeader('Content-Type', 'text/plain');
-    res.end(JSON.stringify("Too many messages sent recently", null, 2));       
+    res.end(JSON.stringify("Parameters are normal", null, 2));       
 }
 
 exports.setTemperature = setTemperature;

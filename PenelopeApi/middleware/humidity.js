@@ -6,11 +6,11 @@ const threshholdHumidity = 35;
 
 function setHumidity(req, res, cache){
     
-    var sensorHum = req.params.h;
-    console.log(sensorHum);
+    var sensorHum = req.params.h;    
+    res.setHeader('Content-Type', 'text/plain');
     
     timing.set(sensorHum, "latestHum", cache);
-    console.log('here');
+    
     if(sensorHum >= threshholdHumidity)
     {
         if(timing.canSendSms(cache))
@@ -24,10 +24,15 @@ function setHumidity(req, res, cache){
             res.end(); 
             return;
         }
+        else{
+            
+            res.end(JSON.stringify("Too many messages sent recently", null, 2)); 
+            return;
+        }
     }
 
-    res.setHeader('Content-Type', 'text/plain');
-    res.end(JSON.stringify("Too many messages sent recently", null, 2));     
+    
+    res.end(JSON.stringify("Parameters are normal", null, 2));   
 }
 
 
