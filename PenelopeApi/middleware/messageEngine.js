@@ -6,7 +6,7 @@ const temperatureMessages = [ "Have we moved to hell again?",
 
 const humidityMessages = [ "Something around here is getting hot and steamy ... Didn't know your mum is visiting.", 
                             "Hey, it's like a tropical forest! Too bad I'm NOT a tropical plant!", 
-                            "I'm not a F****ing cactus!",
+                            "Unlike you my hair doesn't get frizzy ... I just drown ...",
                             "Are you too poor or too cheap to install Air-Con?" ];
                             
 const randomMessages = [ "I think we’re at the point in our relationship where we should start seeing other people… Love, your pot plant", 
