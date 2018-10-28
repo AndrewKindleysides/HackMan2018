@@ -2,7 +2,7 @@ var sms = require("./sms");
 const timing = require("./timing");
 const engine = require('./messageEngine');
 
-const threshholdHumidity = 21;
+const threshholdHumidity = 40;
 
 function setHumidity(req, res, cache){
     

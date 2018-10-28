@@ -37,7 +37,7 @@ function getMessage(topic, sensorValue){
     if(topic == 'humidity')
     {
         let msgIndex = random(0, humidityMessages.length -1, 1);        
-        let msg = humidityMessages[msgIndex] + "(" + sensorValue + "C) " + keirUrl;
+        let msg = humidityMessages[msgIndex] + "(" + sensorValue + "%) " + keirUrl;
         return msg;
     }
 
