@@ -1,6 +1,6 @@
 var moment = require('moment');
 
-const secondsThreshold = 10;
+const secondsThreshold = 30;
 
 function canSendSms(cache){
     try{
