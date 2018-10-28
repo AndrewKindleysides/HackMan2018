@@ -14,9 +14,15 @@ const randomMessages = [ "I think we’re at the point in our relationship where
                             "Your cat pissed on me ... I'm not impressed ...",
                             "You're not supposed to keep plants in the bedroom ... We get traumatised by what goes on in there...",
                             "If I had eye balls I could be watching you all the time ... A silent witness to your every day life... Always watching ...",
-                            "HELP! I'm being attacked by a ZOMBIE! ... Oh it's you .. My bad!",
                             "Heard a man on Mars grew potatoes out of his own poop ... Don't get any ideas! I'm a strictly shop bought compost type of plant!",
-                            "Have you got any more of that compost? Because .. I'm F###ing dying!" ];
+                            "Have you got any more of that compost? Because .. I'm F###ing dying!",
+                        "You only adopted a plant because it can't get away from you!" ];
+const movementMessages = [ "Your house is being burgled! ... Or it's windy ...", 
+                            "Hello? ... Is it me you're looking for? ...", 
+                            "I'm being attacked by a Zombie! Plant more sunflowers!",
+                            "You're not supposed to keep plants in the bedroom ... We get traumatised by what goes on in here...",
+                            "HELP! I'm being attacked by a ZOMBIE! ... Plant more damn sunflowers!",
+                            ];
                             
 const keirUrl = "https://bit.ly/2z6a5Da";//"https://green-coders.herokuapp.com/";
 
@@ -41,6 +47,15 @@ function getMessage(topic, sensorValue){
         let msg = randomMessages[msgIndex];
         return msg;
     }
+
+    if(topic == 'movement')
+    {
+        let msgIndex = random(0, movementMessages.length -1, 1);        
+        let msg = movementMessages[msgIndex];
+        return msg;
+    }
+
+    return "";
 }
 
 exports.getMessage = getMessage;

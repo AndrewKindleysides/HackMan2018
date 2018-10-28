@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var temperature = require('./middleware/temperature');
 var humidity = require('./middleware/humidity');
+var movement = require('./middleware/movement');
 var fan = require('./middleware/fan');
 var latest = require('./middleware/latest');
 var random = require('./middleware/random');
@@ -32,6 +33,7 @@ app.use(function(req, res, next) {
 app.get('/', (req, res) => res.send('Hello World!'));
 app.get('/temperature/:t', (req, res) => temperature.setTemperature(req,res, cache));
 app.get('/humidity/:h', (req, res) => humidity.setHumidity(req,res, cache));
+app.get('/movement/:m', (req, res) => movement.trigger(req,res, cache));
 app.get('/fan', (req, res) => fan.start(req, res));
 app.get('/latest/:p', (req, res) => latest.get(req, res, cache));
 app.get('/random', (req, res) => random.get(req, res, cache));
