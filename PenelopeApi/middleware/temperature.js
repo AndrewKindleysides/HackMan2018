@@ -4,17 +4,14 @@ const timing = require("./timing");
 
 const threshholdTemp = 35;
 
-function setTemperature(req, res){
+function setTemperature(req, res, cache){
     
-    console.log(req.params.t);
-    //timing.update(new Date());
-
     if(req.params.t >= threshholdTemp)
     {
-        //if(timing.canSendSms())
+        if(timing.canSendSms(cache))
         {
-            sms.send("Have we moved back down to hell?");
-            timing.update(new Date());
+            sms.send("My test?");
+            timing.update(cache);
         }
     }
 

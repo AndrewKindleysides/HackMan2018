@@ -1,44 +1,45 @@
 var parse = require('date-fns/parse');
-var datefns = require('date-fns');
+var moment = require('moment');
 const fs = require('fs');
 
-function canSendSms(){
-    fs.readFileSync('/lastSmsTime', (err, data) => {
-        
-        if (err) 
-            console.log('error reading latest time + err');
+const minutesThreshold = 2;
 
-        try{
-            console.log("read file" + data);
-            let lastSmsTime = parse(data);
-            let currentSmsTime = new Date();
-            var minutesElapsed = datefns.differenceInMinutes(currentSmsTime, lastSmsTime);
-            if(minutesElapsed >= 5)
-                return true;
-                
-        }catch(err){
-            console.log(err);
-        }
-        return false;
-        });
-}
-
-function update(date){
+function canSendSms(cache){
     try{
-        fs.writeFile('lastSmsTime.js', date, (err) => {  
-            
-            if (err) 
-                throw err;
+        let cachedValue = cache.get( "lastSmsTime" );
+        console.log("cached: " + cachedValue);
+        if ( cachedValue == undefined ){
+            console.log("returning true");
+            return true;
+        }
         
-            console.log('SMs time saved saved!' + date);
-        });
+        var lastSmsTime = moment(cachedValue);
+        console.log(lastSmsTime + " lastSmsTime");
+
+        var currentTime = new moment(new Date());
+        console.log(currentTime + " currentTime");
+
+        var elapsedMinutes = moment.duration(currentTime.diff(lastSmsTime)).asMinutes();
+        console.log(elapsedMinutes + " elapsedMinutes");
+
+        if(elapsedMinutes > minutesThreshold)
+            return true;
+
+        return false;        
     }
     catch(err)
     {
         console.log(err);
+        return false;
     }
+}
 
-    
+function update(cache){    
+        cache.set( "lastSmsTime", new Date().toISOString(), function( err, success ){
+        if( !err && success ){
+            console.log( success );              
+        }
+    });        
 }
 
 exports.canSendSms = canSendSms;

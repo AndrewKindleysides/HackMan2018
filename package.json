@@ -14,7 +14,9 @@
     "clockwork": "^0.1.4",
     "date-fns": "^2.0.0-alpha.24",
     "express": "^4.16.4",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "moment": "^2.22.2",
+    "node-cache": "^4.2.0"
   },
   "devDependencies": {},
   "engines": {
