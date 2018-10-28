@@ -16,7 +16,7 @@ function setHumidity(req, res, cache){
         if(timing.canSendSms(cache))
         {
             var message = engine.getMessage("humidity", sensorHum); 
-            //sms.send(message);
+            sms.send(message);
             timing.update(cache);
 
             res.setHeader('Content-Type', 'text/plain');
