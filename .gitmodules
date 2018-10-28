@@ -1,0 +1,3 @@
+[submodule "PlantPython/PlantPython/requests"]
+	path = PlantPython/PlantPython/requests
+	url = https://github.com/requests/requests
