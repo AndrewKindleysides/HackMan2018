@@ -2,7 +2,7 @@ const sms = require("./sms");
 const timing = require("./timing");
 const engine = require('./messageEngine');
 
-const threshholdTemp = 35;
+const threshholdTemp = 23;
 
 function setTemperature(req, res, cache){
     
