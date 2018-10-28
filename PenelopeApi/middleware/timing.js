@@ -37,8 +37,19 @@ function update(cache){
         if( !err && success ){
             console.log( success );              
         }
-    });        
+    });     
+       
+}
+
+function set(sensorTemp, cacheKey, cache)
+{    
+    cache.set(cacheKey, sensorTemp, function( err, success ){
+        if( !err && success ){
+            console.log( success );              
+        }
+    });  
 }
 
 exports.canSendSms = canSendSms;
 exports.update = update;
+exports.set = set;

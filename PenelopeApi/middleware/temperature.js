@@ -8,7 +8,8 @@ function setTemperature(req, res, cache){
     
     var sensorTemp = req.params.t;
     
-    console.log(message);
+    timing.set(sensorTemp, "latestTemp", cache);
+
     if(sensorTemp >= threshholdTemp)
     {
         if(timing.canSendSms(cache))

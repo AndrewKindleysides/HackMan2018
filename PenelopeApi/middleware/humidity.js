@@ -1,26 +1,33 @@
-const bodyParser = require('body-parser');
 var sms = require("./sms");
 const timing = require("./timing");
+const engine = require('./messageEngine');
 
 const threshholdHumidity = 35;
 
-function setHumidity(req, res){
+function setHumidity(req, res, cache){
     
-    console.log(req.params.h);
-    //timing.update(new Date());
-
-    if(req.params.h >= threshholdHumidity)
+    var sensorHum = req.params.h;
+    console.log(sensorHum);
+    
+    timing.set(sensorHum, "latestHum", cache);
+    console.log('here');
+    if(sensorHum >= threshholdHumidity)
     {
-        //if(timing.canSendSms())
+        if(timing.canSendSms(cache))
         {
-            sms.send("Something is getting hot and steamy? Didn't know your mum was visiting.");
-            timing.update(new Date());
+            var message = engine.getMessage("humidity", sensorHum); 
+            //sms.send(message);
+            timing.update(cache);
+
+            res.setHeader('Content-Type', 'text/plain');
+            res.write(message);  
+            res.end(); 
+            return;
         }
     }
 
     res.setHeader('Content-Type', 'text/plain');
-    res.write('you posted:\n');
-    res.end(JSON.stringify(req.params.h, null, 2));   
+    res.end(JSON.stringify("Too many messages sent recently", null, 2));     
 }
 
 
