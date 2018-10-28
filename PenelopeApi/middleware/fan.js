@@ -7,7 +7,7 @@ function start(req,res, cache){
     
     //if(timing.canSendSms(cache))
         //{
-            var message = "FAN";
+            var message = "Triggered from the Api";
             sms.sendSmsToPie(message);
             //timing.update(cache);
 
