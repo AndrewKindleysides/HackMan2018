@@ -6,21 +6,26 @@ const threshholdTemp = 35;
 
 function setTemperature(req, res, cache){
     
-    var message = engine.getMessage("temperature");
-    if(req.params.t >= threshholdTemp)
+    var sensorTemp = req.params.t;
+    
+    console.log(message);
+    if(sensorTemp >= threshholdTemp)
     {
         if(timing.canSendSms(cache))
         {
-            var message = engine.getMessage("temperature");
+            var message = engine.getMessage("temperature", sensorTemp); 
             sms.send(message);
             timing.update(cache);
+
+            res.setHeader('Content-Type', 'text/plain');
+            res.write(message);  
+            res.end(); 
+            return;
         }
     }
 
     res.setHeader('Content-Type', 'text/plain');
-    res.write(message);
-    res.end(JSON.stringify(req.params.t, null, 2));   
+    res.end(JSON.stringify("Too many messages sent recently", null, 2));       
 }
-
 
 exports.setTemperature = setTemperature;

@@ -1,8 +1,6 @@
-var parse = require('date-fns/parse');
 var moment = require('moment');
-const fs = require('fs');
 
-const minutesThreshold = 2;
+const secondsThreshold = 10;
 
 function canSendSms(cache){
     try{
@@ -19,10 +17,10 @@ function canSendSms(cache){
         var currentTime = new moment(new Date());
         console.log(currentTime + " currentTime");
 
-        var elapsedMinutes = moment.duration(currentTime.diff(lastSmsTime)).asMinutes();
-        console.log(elapsedMinutes + " elapsedMinutes");
+        var elapsedSeconds = moment.duration(currentTime.diff(lastSmsTime)).asSeconds();
+        console.log(elapsedSeconds + " elapsedSeconds");
 
-        if(elapsedMinutes > minutesThreshold)
+        if(elapsedSeconds > secondsThreshold)
             return true;
 
         return false;        
