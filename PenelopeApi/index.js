@@ -6,6 +6,7 @@ var movement = require('./middleware/movement');
 var fan = require('./middleware/fan');
 var latest = require('./middleware/latest');
 var random = require('./middleware/random');
+var sleep = require('./middleware/sleep');
 const NodeCache = require( "node-cache" );
 const cache = new NodeCache();
 
@@ -37,6 +38,7 @@ app.get('/movement/:m', (req, res) => movement.trigger(req,res, cache));
 app.get('/fan', (req, res) => fan.start(req, res));
 app.get('/latest/:p', (req, res) => latest.get(req, res, cache));
 app.get('/random', (req, res) => random.get(req, res, cache));
+app.get('/sleep', (req, res) => sleep.get(req, res, cache));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
