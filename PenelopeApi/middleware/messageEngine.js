@@ -24,7 +24,7 @@ const movementMessages = [ "Your house is being burgled! ... Or it's windy ...",
                             "HELP! I'm being attacked by a ZOMBIE! ... Plant more damn sunflowers!",
                             ];
                             
-const keirUrl = "https://bit.ly/2z6a5Da";//"https://green-coders.herokuapp.com/";
+const keirUrl = "https://green-coders.herokuapp.com/";//"https://bit.ly/2z6a5Da";//
 
 function getMessage(topic, sensorValue){
     if(topic == 'temperature')
